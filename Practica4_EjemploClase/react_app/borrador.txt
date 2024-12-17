@@ -1,0 +1,44 @@
+
+function FiltroDiv(){
+
+  const estilos= {
+    position: "absolute",
+    top: "0",
+    left: "0",
+    width: "100vw", /* 100% del ancho de la ventana */
+    height: "100vh", /* 100% de la altura de la ventana */
+    backgroundColor: "rgba(0, 0, 0, 0.5)", /* Color negro semi-transparente */
+    zIndex: "9999", /* Asegúrate de que esté al frente */
+  }
+
+  return (
+    <div style={estilos}>
+
+    </div>
+  )
+}
+
+function Textmoving(obj){
+
+  const pstyle={
+    fontFamily:"Segoe UI",
+    fontWeight:"bold",
+    animation:  obj.status && "animacion1 4s linear infinite"
+  }
+
+  return(
+    <>
+    <p style={pstyle}>{obj.texto ? obj.texto : "añade texto coño"}</p>
+    </>
+  )
+}
+
+
+          <Textmoving
+              status={true}
+              texto="mario_soto.webp"
+          />
+          <FiltroDiv/>
+          <Textmoving
+              status={true}
+          />
