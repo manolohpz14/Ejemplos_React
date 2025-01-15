@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario con JavaScript Nativo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      form {
+        text-align: center;
+        margin-top: 5rem;
+      }
+      label {
+        padding: 0.5rem;
+      }
+      input {
+        padding: 0.2rem;
+        text-align: center;
+      }
+      button {
+        font-size: 0.8rem;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="signupForm">
+      <div>
+        <label for="username">Nombre:</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Introduce tu nombre"
+        />
+      </div>
+      <div style="margin-top: 0.2rem;">
+        <label for="lastname">Apellido:</label>
+        <input
+          type="text"
+          id="lastname"
+          placeholder="Introduce tu apellido"
+        />
+      </div>
+      <div style="margin-top: 1rem;">
+        <button type="submit" id="submitButton">Enviar</button>
+      </div>
+      <p id="outputName">Valor introducido: </p>
+      <p id="outputLastname">Segundo valor introducido: </p>
+    </form>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const form = //haz query
+        const usernameInput = //haz query
+        const lastnameInput = //haz query
+        const submitButton = //haz query
+        const outputName = //haz query
+        const outputLastname = //haz query
+
+        // Actualizar los valores dinámicamente
+        usernameInput.addEventListener('input', function () {
+            //da a los outputs los valores de los inputs
+
+        });
+
+        lastnameInput.addEventListener('input', function () {
+            //da a los outputs los valores de los inputs
+
+        });
+
+        form.addEventListener('submit', function (event) {
+          //haz que el evento no sea predeterminado econ preventdefault
+
+          //desactiva los botones
+
+
+          //da a los outputs los valores finales de los inputs
+
+          //reinicio los valores de los inputs a vacio
+
+        });
+      });
+    </script>
+  </body>
+</html>
