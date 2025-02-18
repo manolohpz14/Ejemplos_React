@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de ECharts con Eje Y y Colores Personalizados</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        #main {
+            width: 100%;
+            height: 400px;
+            margin: auto;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center;">Gráfico de Barras de Ventas con ECharts3</h2>
+    <div id="main"></div>
+
+    <div class="button-container">
+        <button id="createChartBtn">Crear Gráfico</button>
+        <button id="destroyChartBtn">Eliminar Gráfico</button>
+    </div>
+
+    <script>
+        let myChart;
+
+        function createChart() {
+            const chartDom = document.getElementById('main');
+
+            //-------------Option 1--------------------------------------
+           
+
+            const option = {
+                title: {
+                    text: 'ECharts Getting Started Example'
+                },
+                tooltip: {},
+                legend: {
+                    data: ['sales', 'profit']
+                },
+                xAxis: {
+                    type: 'value',
+                    name: 'Ventas', 
+                },
+                yAxis: {
+                    type: 'category',
+                    data: ['Shirts', 'Cardigans', 'Chiffons', 'Pants', 'Heels', 'Socks'], 
+                    name: 'Productos' 
+                },
+                series: [
+                    {
+                        name: 'sales',
+                        type: 'bar',
+                        data: [5, 20, 36, 10, 10, 20],
+                        itemStyle: {
+                            color: '#759aa0'
+                            
+                        }
+  
+
+                    }
+                ]
+            };
+
+
+
+            //---------------Option 2------------------------------------
+            const option2 = {
+            title: {
+                text: 'ECharts Getting Started Example'
+            },
+            tooltip: {},
+            legend: {
+                data: ['sales', 'profit']
+            },
+            xAxis: {
+                type: 'category',
+                data: ['Shirts', 'Cardigans', 'Chiffons', 'Pants', 'Heels', 'Socks'], // Las categorías ahora van en el eje X
+                name: 'Productos' 
+            },
+            yAxis: {
+                type: 'value',
+                name: 'Ventas'
+            },
+            series: [
+                {
+                    name: 'sales',
+                    type: 'bar',
+                    data: [5, 20, 36, 10, 10, 20], 
+                    itemStyle: {
+                        color: '#dd6b66'
+                    }
+                },
+                {
+                    name: 'profit',
+                    type: 'bar',
+                    data: [15, 30, 10, 5, 25, 40], 
+                    itemStyle: {
+                        color: '#759aa0'
+                    }
+                }
+            ]
+        };
+        //------------------Option 3---------------------------------
+
+        myChart = echarts.init(chartDom);
+
+        const option3 = {
+            title: {
+                text: 'ECharts Getting Started Example',
+                left: 'center',  // Centrar el título
+                // top: '20px', 
+                // bottom: '20px', 
+                textStyle: {
+                    color: '#f1f1f1',
+                    fontSize: 20,  
+                    fontWeight: 'bold' 
+                }
+            },
+            
+            tooltip: {
+                // trigger: Define cómo se activa el tooltip. Puede ser uno de los siguientes valores:
+
+                // 'item': Se activa cuando se pasa el mouse sobre un gráfico o punto de datos.
+                // 'axis': Se activa cuando se pasa el mouse sobre el eje.
+                // 'none': No se activa automáticamente.
+
+                trigger: 'none', // Se activa al pasar el mouse sobre un gráfico o punto de datos
+                // Establece el color de fondo del tooltip (el cuadro que aparece cuando pasas el mouse sobre una barra)
+                backgroundColor: 'rgba(50,50,50,0.7)',  // Color de fondo en formato rgba (negro con 70% de opacidad)
+
+                // Establece el color del borde del tooltip
+                borderColor: '#aaa',  // Color del borde (un gris claro en este caso)
+
+                // Establece el grosor del borde del tooltip
+                borderWidth: 1,  // El borde tendrá un grosor de 1 píxel
+
+                // Establece el estilo del texto dentro del tooltip (el texto que se muestra cuando se pasa el mouse sobre las barras)
+                textStyle: {
+                    color: '#fff',  // Establece el color del texto dentro del tooltip a blanco (#fff)
+                }
+            },
+
+            // Leyenda
+            legend: {
+                data: ['sales', 'profit'],
+                top: '10%', 
+                textStyle: {
+                    color: '#f1f1f1',  
+                    fontSize: 14  
+                }
+            },
+
+            // Ejes
+            xAxis: {
+                type: 'value',
+                name: 'Ventas',
+                nameLocation: 'center',
+                nameGap: 30,
+                nameTextStyle: {
+                    color: '#f1f1f1',  // Color del nombre del eje X
+                    fontSize: 16       // Tamaño de la fuente del nombre del eje X
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#f1f1f1'  // Color de la línea del eje X
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#f1f1f1',  // Color de las etiquetas del eje X
+                        fontSize: 12       // Tamaño de la fuente de las etiquetas del eje X
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        // type: 'dashed',  // Línea de división en el eje X, estilo discontinuo
+                        color: '#aaa'    // Color de las líneas de división
+                    }
+                }
+            },
+
+            yAxis: {
+                type: 'category',
+                data: ['Shirts', 'Cardigans', 'Chiffons', 'Pants', 'Heels', 'Socks'],
+                name: 'Productos', 
+                nameTextStyle: {
+                    color: '#f1f1f1',  // Color del nombre del eje Y
+                    fontSize: 16       // Tamaño de la fuente del nombre del eje Y
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#f1f1f1'  // Color de la línea del eje Y
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#f1f1f1',  // Color de las etiquetas del eje Y
+                        fontSize: 12       // Tamaño de la fuente de las etiquetas del eje Y
+                    }
+                }
+            },
+
+            // Series de datos
+            series: [
+                {
+                    name: 'sales',
+                    type: 'bar',
+                    data: [5, 20, 36, 10, 10, 20],
+                    itemStyle: {
+                        color: '#dd6b66'  // Color de las barras de ventas
+                    },
+                    label: {
+                        show: true,  // Mostrar los valores sobre las barras
+                        position: 'inside',  // Posicionar los valores sobre la barra
+                        color: '#f1f1f1',  // Color del texto de los valores
+                        fontSize: 10  // Tamaño de la fuente de los valores
+                    }
+                },
+                {
+                    name: 'profit',
+                    type: 'bar',
+                    data: [15, 30, 10, 5, 25, 40],
+                    itemStyle: {
+                        color: '#759aa0'  // Color de las barras de beneficio
+                        // color: function (params) {
+                            //     // Asignar un color específico para cada barra dentro de la serie "profit"
+                            //     const colors = ['#759aa0', '#3498db', '#f39c12', '#2ecc71', '#e67e22', '#8e44ad'];
+                            //     return colors[params.dataIndex];
+                            // }
+                    },
+                    label: {
+                        show: true,
+                        position: 'inside',
+                        color: '#f1f1f1',
+                        fontSize: 10
+                    }
+                }
+            ]
+        };
+
+        //---------------------------------------------------
+
+
+
+
+            myChart.setOption(option);
+
+            window.addEventListener('resize', function() {
+                myChart.resize();
+            });
+
+        }
+
+        function destroyChart() {
+            if (myChart) {
+                myChart.dispose(); 
+                myChart = null;
+            }
+        }
+
+        document.getElementById('createChartBtn').addEventListener('click', createChart);
+        document.getElementById('destroyChartBtn').addEventListener('click', destroyChart);
+
+    </script>
+
+</body>
+</html>
